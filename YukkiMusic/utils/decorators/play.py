@@ -1,12 +1,4 @@
-#
-# Copyright (C) 2024 by TheTeamVivek@Github, < https://github.com/TheTeamVivek >.
-#
-# This file is part of < https://github.com/TheTeamVivek/YukkiMusic > project,
-# and is released under the MIT License.
-# Please see < https://github.com/TheTeamVivek/YukkiMusic/blob/master/LICENSE >
-#
-# All rights reserved.
-#
+
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
@@ -36,18 +28,7 @@ def PlayWrapper(command):
     async def wrapper(client, message):
         language = await get_lang(message.chat.id)
         _ = get_string(language)
-        if message.sender_chat:
-            upl = InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(
-                            text="How to Fix ?",
-                            callback_data="AnonymousAdmin",
-                        ),
-                    ]
-                ]
-            )
-            return await message.reply_text(_["general_4"], reply_markup=upl)
+        
 
         if await is_maintenance() is False:
             if message.from_user.id not in SUDOERS:
